@@ -22,4 +22,12 @@ jobs:
           wget https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.12.xml
           wget https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.15.xml
           zip -9 suse.linux.enterprise.server.zip *.xml
+          export version=$(date '+%y.%m.%d')
+          echo "::set-env name=version::$version"
+      - name: release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: ${{ env.version }}
+          files: |
+            suse.linux.enterprise.server.zip
           
