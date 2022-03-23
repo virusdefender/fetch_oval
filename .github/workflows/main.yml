@@ -24,9 +24,11 @@ jobs:
           zip -9 suse.linux.enterprise.server.zip *.xml
           export version=$(date '+%y.%m.%d')
       - name: release
-        uses: softprops/action-gh-release@v1
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          name: ${{ env.version }}
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: ${{ env.version }}
           files: |
             suse.linux.enterprise.server.zip
-          
