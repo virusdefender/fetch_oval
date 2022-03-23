@@ -18,8 +18,8 @@ jobs:
           apt update && apt install -y wget zip
           mkdir download
           cd download
-          wget --fail-with-body https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.11.xml
-          wget --fail-with-body https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.12.xml
-          wget --fail-with-body https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.15.xml
+          wget https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.11.xml
+          wget https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.12.xml
+          wget https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.15.xml
           zip -9 suse.linux.enterprise.server.zip *.xml
           
