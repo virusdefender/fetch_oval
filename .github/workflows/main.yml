@@ -31,4 +31,4 @@ jobs:
           prerelease: false
           title: ${{ env.version }}
           files: |
-            suse.linux.enterprise.server.zip
+            download/*
