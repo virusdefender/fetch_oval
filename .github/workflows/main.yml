@@ -1,0 +1,25 @@
+
+
+name: CI
+on:
+  schedule:
+  - cron: "0 1 * * *"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: download suse oval rules
+        run: |
+          set -ex
+          apt update && apt install -y wget zip
+          mkdir download
+          cd download
+          wget --fail-with-body https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.11.xml
+          wget --fail-with-body https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.12.xml
+          wget --fail-with-body https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.15.xml
+          zip -9 suse.linux.enterprise.server.zip *.xml
+          
